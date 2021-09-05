@@ -16,12 +16,12 @@ export class ToDoResolver {
     return await ToDo.create({ task }).save();
   }
 
-  @Mutation(() => Boolean)
+  @Mutation(() => ToDo)
   async updateDone(
     @Arg("id", () => Int) id: number,
     @Arg("done") done: boolean
   ) {
     await ToDo.update({ id }, { done });
-    return true;
+    return await ToDo.findOne({ id });
   }
 }
