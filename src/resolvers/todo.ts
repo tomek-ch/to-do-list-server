@@ -8,8 +8,11 @@ export class ToDoResolver {
     return await ToDo.find();
   }
 
-  @Mutation(() => ToDo)
+  @Mutation(() => ToDo, { nullable: true })
   async createToDo(@Arg("task") task: string) {
+    if (!task) {
+      return null;
+    }
     return await ToDo.create({ task }).save();
   }
 
