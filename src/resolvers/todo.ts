@@ -24,4 +24,10 @@ export class ToDoResolver {
     await ToDo.update({ id }, { done });
     return await ToDo.findOne({ id });
   }
+
+  @Mutation(() => Int)
+  async deleteToDo(@Arg("id", () => Int) id: number) {
+    await ToDo.delete({ id });
+    return id;
+  }
 }
