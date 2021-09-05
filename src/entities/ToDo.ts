@@ -13,6 +13,6 @@ export class ToDo extends BaseEntity {
   task!: string;
 
   @Field()
-  @Column()
+  @Column("boolean", { default: false })
   done!: boolean;
 }
