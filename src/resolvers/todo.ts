@@ -5,7 +5,7 @@ import { ToDo } from "../entities/ToDo";
 export class ToDoResolver {
   @Query(() => [ToDo])
   async ToDos() {
-    return await ToDo.find();
+    return await ToDo.find({ order: { done: "DESC" } });
   }
 
   @Mutation(() => ToDo, { nullable: true })
